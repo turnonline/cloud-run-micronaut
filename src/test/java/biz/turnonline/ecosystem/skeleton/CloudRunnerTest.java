@@ -1,4 +1,4 @@
-package biz.turnonline.ecosystem.billing.task;
+package biz.turnonline.ecosystem.skeleton;
 
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.MediaType;
