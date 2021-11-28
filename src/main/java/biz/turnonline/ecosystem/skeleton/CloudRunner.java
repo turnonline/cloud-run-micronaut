@@ -58,7 +58,7 @@ public class CloudRunner
     }
 
     @Post( consumes = MediaType.TEXT_PLAIN )
-    public HttpResponse<?> processOffer( @NotBlank String body )
+    public HttpResponse<?> run( @NotBlank String body )
     {
         String plainText = decode( body );
         LOGGER.info( "Decode text = " + plainText );
