@@ -1,0 +1,3 @@
+micronaut:
+  application:
+    name: cloud-run-java-micronaut
