@@ -156,7 +156,7 @@
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <arg>-Amicronaut.processing.group=biz.turnonline.ecosystem.skeleton</arg>
+                        <arg>-Amicronaut.processing.group=biz.turnonline.ecosystem</arg>
                         <arg>-Amicronaut.processing.module=cloud-run-java-micronaut</arg>
                     </compilerArgs>
                 </configuration>
