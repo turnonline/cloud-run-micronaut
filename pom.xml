@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.micronaut</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.3.3</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -37,7 +37,7 @@
     <properties>
         <jdk.version>11</jdk.version>
         <release.version>11</release.version>
-        <micronaut.version>3.2.0</micronaut.version>
+        <micronaut.version>${project.parent.version}</micronaut.version>
         <exec.mainClass>biz.turnonline.ecosystem.skeleton.Application</exec.mainClass>
         <packaging>jar</packaging>
         <micronaut.runtime>netty</micronaut.runtime>
@@ -48,7 +48,7 @@
             <dependency>
                 <groupId>com.google.cloud</groupId>
                 <artifactId>libraries-bom</artifactId>
-                <version>24.0.0</version>
+                <version>24.3.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -101,7 +101,7 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>1.6.2</version>
+            <version>1.6.5</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
@@ -164,7 +164,7 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>3.1.4</version>
+                <version>3.2.0</version>
                 <configuration>
                     <to>
                         <image>eu.gcr.io/[replace_project_id]/${project.artifactId}:${project.version}</image>
