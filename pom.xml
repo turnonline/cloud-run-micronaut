@@ -13,7 +13,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>${packaging}</packaging>
     <name>Cloud Run Micronaut</name>
-    <description>Cloud Run skeleton based on Java Micronaut</description>
+    <description>Cloud Run service skeleton based on the Micronaut framework</description>
 
     <scm>
         <connection>scm:git:[fetch=]git@github.com:turnonline/cloud-run-java-micronaut.git</connection>

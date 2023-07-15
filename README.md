@@ -1,4 +1,4 @@
-# Cloud Run skeleton based on the Java Micronaut framework
+# Cloud Run service skeleton based on the Micronaut framework
 
 This combination of technologies allows developers to create scalable and efficient microservices or serverless
 applications on the Cloud Run platform.
