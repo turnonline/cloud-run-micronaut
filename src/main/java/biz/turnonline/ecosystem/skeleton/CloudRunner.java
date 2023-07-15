@@ -10,6 +10,7 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
 import org.apache.commons.codec.binary.Base64;
@@ -17,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
-import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -58,12 +58,12 @@ public class CloudRunner
     }
 
     @Post( consumes = MediaType.TEXT_PLAIN )
-    public HttpResponse<?> run( @NotBlank String body )
+    public HttpResponse<?> run( @Body String body )
     {
         String plainText = decode( body );
-        LOGGER.info( "Decode text = " + plainText );
+        LOGGER.info( "Decoded text = " + plainText );
 
-        return HttpResponse.ok();
+        return HttpResponse.ok( plainText );
     }
 
     private String decode( @Nonnull String data )

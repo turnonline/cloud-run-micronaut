@@ -1,0 +1,22 @@
+steps:
+  # Build the project and push container image by maven JIB plugin
+  - name: 'maven:3-eclipse-temurin-17'
+    entrypoint: mvn
+    args:
+      - 'compile'
+      - 'jib:build'
+      - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
+  # Deploy the built image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'services'
+      - 'update'
+      - '$REPO_NAME'
+      - '--image=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
+      - '--platform=managed'
+      - '--region=europe-west1'
+      - '--quiet'
+substitutions:
+  _REPOSITORY_HOSTNAME: europe-west1-docker.pkg.dev

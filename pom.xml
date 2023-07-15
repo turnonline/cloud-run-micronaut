@@ -2,9 +2,9 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>io.micronaut</groupId>
+        <groupId>io.micronaut.platform</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>3.3.3</version>
+        <version>4.0.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -13,7 +13,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>${packaging}</packaging>
     <name>Cloud Run Micronaut</name>
-    <description>Cloud Run Java Micronaut skeleton - Docker</description>
+    <description>Cloud Run skeleton based on Java Micronaut</description>
 
     <scm>
         <connection>scm:git:[fetch=]git@github.com:turnonline/cloud-run-java-micronaut.git</connection>
@@ -35,9 +35,9 @@
     </developers>
 
     <properties>
-        <jdk.version>11</jdk.version>
-        <release.version>11</release.version>
-        <micronaut.version>${project.parent.version}</micronaut.version>
+        <jdk.version>17</jdk.version>
+        <release.version>17</release.version>
+        <micronaut.version>4.0.0</micronaut.version>
         <exec.mainClass>biz.turnonline.ecosystem.skeleton.Application</exec.mainClass>
         <packaging>jar</packaging>
         <micronaut.runtime>netty</micronaut.runtime>
@@ -48,7 +48,7 @@
             <dependency>
                 <groupId>com.google.cloud</groupId>
                 <artifactId>libraries-bom</artifactId>
-                <version>24.3.0</version>
+                <version>26.18.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -61,12 +61,20 @@
             <artifactId>micronaut-inject</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.micronaut</groupId>
+            <groupId>io.micronaut.validation</groupId>
             <artifactId>micronaut-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
             <artifactId>micronaut-http-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.reactor</groupId>
+            <artifactId>micronaut-reactor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-jackson-databind</artifactId>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
@@ -83,12 +91,12 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.11</version>
+            <version>1.16.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
-            <version>8.1.0</version>
+            <version>9.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -139,7 +147,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.micronaut.build</groupId>
+                <groupId>io.micronaut.maven</groupId>
                 <artifactId>micronaut-maven-plugin</artifactId>
             </plugin>
             <plugin>
@@ -154,6 +162,11 @@
                             <artifactId>micronaut-http-validation</artifactId>
                             <version>${micronaut.version}</version>
                         </path>
+                        <path>
+                            <groupId>io.micronaut.validation</groupId>
+                            <artifactId>micronaut-validation-processor</artifactId>
+                            <version>${micronaut.version}</version>
+                        </path>
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <arg>-Amicronaut.processing.group=biz.turnonline.ecosystem</arg>
@@ -164,10 +177,12 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.2</version>
                 <configuration>
                     <to>
-                        <image>eu.gcr.io/[replace_project_id]/${project.artifactId}:${project.version}</image>
+                        <image>
+                            europe-west1-docker.pkg.dev/[replace_project_id]/docker-images/${project.artifactId}:${project.version}
+                        </image>
                     </to>
                 </configuration>
             </plugin>
