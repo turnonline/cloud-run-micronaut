@@ -23,11 +23,22 @@ once successfully finished, you can find the final image in Docker daemon tagged
 
 ### Manual build and remote deployment of the docker image
 
+Before attempting to push the image, make sure you run GraalVM JDK. The easiest way to install GraalVM on Linux or Mac
+is to use [SDKMan.io](https://sdkman.io/).
+
+*Java 17*, check the latest version at [GraalVM downloads](https://www.graalvm.org/downloads/)
+
+```bash
+sdk install java 17.0.7-graal
+```
+
+Command to push the Docker image of the application to the Artifact Registry:
+
 ```bash
 mvn clean deploy -Dpackaging=docker
 ```
 
-the final image will be pushed to the Artifact Registry at:
+the final image will be pushed at:
 
 ```
 europe-west1-docker.pkg.dev/[gcp_project_id]/docker-images

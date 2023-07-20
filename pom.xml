@@ -184,7 +184,7 @@
                 <configuration>
                     <to>
                         <image>
-                            europe-west1-docker.pkg.dev/[replace_project_id]/docker-images/${project.artifactId}:${project.version}
+                            europe-west1-docker.pkg.dev/turnon-t1/docker-images/${project.artifactId}:${project.version}
                         </image>
                     </to>
                 </configuration>

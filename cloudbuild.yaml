@@ -1,4 +1,10 @@
 steps:
+#  - name: 'gcr.io/cloud-builders/mvn'
+  - name: 'maven:3-eclipse-temurin-17'
+    entrypoint: mvn
+    args:
+      - 'package'
+      - '-Dpackaging=native-image'
   # Build the project and push container image by maven JIB plugin
   - name: 'maven:3-eclipse-temurin-17'
     entrypoint: mvn
@@ -7,7 +13,7 @@ steps:
       - 'jib:build'
       - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
   # Deploy the built image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: gcloud
     args:
       - 'run'
