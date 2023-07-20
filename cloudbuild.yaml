@@ -1,7 +1,7 @@
 steps:
   - name: 'ghcr.io/graalvm/graalvm-ce:ol9-java17-22.3.2'
     entrypoint: /bin/bash
-    args: [ 'gu install native-image' ]
+    args: [ '-c','gu install native-image' ]
   - name: 'gcr.io/cloud-builders/mvn'
     entrypoint: mvn
     args:
