@@ -1,5 +1,5 @@
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: gcr.io/cloud-builders/gcloud
     entrypoint: /bin/bash
     args: [ '-c','<(curl -sL https://get.graalvm.org/jdk) graalvm-ce-java17-22.3.1' ]
   - name: 'maven:3-eclipse-temurin-17'
@@ -15,7 +15,7 @@ steps:
       - 'jib:build'
       - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
   # Deploy the built image to Cloud Run
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: gcr.io/cloud-builders/gcloud
     entrypoint: gcloud
     args:
       - 'run'
