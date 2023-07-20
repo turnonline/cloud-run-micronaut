@@ -3,13 +3,11 @@ steps:
     entrypoint: /bin/bash
     args: [ '-c','gu install native-image' ]
   - name: 'gcr.io/cloud-builders/mvn'
-    entrypoint: mvn
     args:
       - 'package'
       - '-Dpackaging=native-image'
   # Build the project and push container image by maven JIB plugin
   - name: 'gcr.io/cloud-builders/mvn'
-    entrypoint: mvn
     args:
       - 'compile'
       - 'jib:build'
