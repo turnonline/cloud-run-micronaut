@@ -3,7 +3,8 @@ steps:
     entrypoint: /bin/bash
     args:
       - '-c'
-      - <(curl -sL https://get.graalvm.org/jdk) graalvm-ce-java17-22.3.1
+      - |-
+        <(curl -sL https://get.graalvm.org/jdk) graalvm-ce-java17-22.3.1
   - name: 'maven:3-eclipse-temurin-17'
     entrypoint: mvn
     args:
