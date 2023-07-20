@@ -18,6 +18,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
+import static com.google.common.truth.Truth.assertWithMessage;
+
 @MicronautTest
 class CloudRunnerTest
 {
@@ -60,6 +62,17 @@ class CloudRunnerTest
                 .contentType( MediaType.TEXT_PLAIN );
 
         System.out.println( "response = " + client.toBlocking().exchange( post ).getStatus() );
+    }
+
+    @Test
+    public void testGet_PlainText()
+    {
+        MutableHttpRequest<Object> get = HttpRequest.GET( "/" )
+                .contentType( MediaType.TEXT_PLAIN );
+
+        assertWithMessage( "GET response" )
+                .that( client.toBlocking().retrieve( get ) )
+                .isEqualTo( "Hello World!" );
     }
 
     @Test

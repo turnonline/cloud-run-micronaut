@@ -12,6 +12,7 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
@@ -55,6 +56,12 @@ public class CloudRunner
                 .setCredentials( GoogleCredentials.getApplicationDefault() )
                 .build() );
         return FirebaseAuth.getInstance();
+    }
+
+    @Get( produces = MediaType.TEXT_PLAIN )
+    public String get()
+    {
+        return "Hello World!";
     }
 
     @Post( consumes = MediaType.TEXT_PLAIN )
