@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.micronaut.platform</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>4.0.0</version>
+        <version>4.0.1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -41,6 +41,7 @@
         <exec.mainClass>biz.turnonline.ecosystem.skeleton.Application</exec.mainClass>
         <packaging>jar</packaging>
         <micronaut.runtime>netty</micronaut.runtime>
+        <maven.native.plugin.version>0.9.23</maven.native.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -94,9 +95,8 @@
             <version>1.16.0</version>
         </dependency>
         <dependency>
-            <groupId>com.google.firebase</groupId>
-            <artifactId>firebase-admin</artifactId>
-            <version>9.2.0</version>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -151,6 +151,9 @@
                 <artifactId>micronaut-maven-plugin</artifactId>
                 <configuration>
                     <baseImageRun>ubuntu:latest</baseImageRun>
+                    <nativeImageBuildArgs>
+                        <nativeImageBuildArg>--verbose</nativeImageBuildArg>
+                    </nativeImageBuildArgs>
                 </configuration>
             </plugin>
             <plugin>
