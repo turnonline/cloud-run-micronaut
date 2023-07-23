@@ -5,6 +5,7 @@ steps:
     args:
       - 'package'
       - '-Dpackaging=docker-native'
+      - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', '$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA' ]
   # Deploy the built image to Cloud Run
