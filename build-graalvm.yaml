@@ -5,9 +5,9 @@ steps:
     args:
       - 'package'
       - '-Dpackaging=docker-native'
-      - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
+      - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA'
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', '$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA' ]
+    args: [ 'push', '$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA' ]
   # Deploy the built image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: gcloud
@@ -15,7 +15,7 @@ steps:
       - 'run'
       - 'deploy'
       - '$REPO_NAME'
-      - '--image=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
+      - '--image=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA'
       - '--platform=managed'
       - '--region=europe-west1'
       - '--quiet'
