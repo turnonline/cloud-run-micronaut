@@ -1,14 +1,6 @@
 steps:
-  - name: 'ghcr.io/graalvm/graalvm-ce:ol9-java17-22.3.2'
-    entrypoint: /bin/bash
-    args: [ '-c','gu install native-image' ]
-  - name: 'gcr.io/cloud-builders/mvn'
-    entrypoint: mvn
-    args:
-      - 'package'
-      - '-Dpackaging=native-image'
   # Build the project and push container image by maven JIB plugin
-  - name: 'gcr.io/cloud-builders/mvn'
+  - name: 'maven:3-eclipse-temurin-17'
     entrypoint: mvn
     args:
       - 'compile'
@@ -19,8 +11,7 @@ steps:
     entrypoint: gcloud
     args:
       - 'run'
-      - 'services'
-      - 'update'
+      - 'deploy'
       - '$REPO_NAME'
       - '--image=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
       - '--platform=managed'

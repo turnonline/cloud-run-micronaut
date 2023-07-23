@@ -1,13 +1,10 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
+  # Build the project and push container image by docker push
+  - name: 'maven:3-eclipse-temurin-17'
+    entrypoint: mvn
     args:
-      - 'build'
-      - '-t'
-      - '$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
-      - '--build-arg=BASE_IMAGE=$_BASE_IMAGE'
-      - '--build-arg=BASE_IMAGE_RUN=$_BASE_IMAGE_RUN'
-      - '--build-arg=CLASS_NAME=$_CLASS_NAME'
-      - '.'
+      - 'package'
+      - '-Dpackaging=docker-native'
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', '$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA' ]
   # Deploy the built image to Cloud Run
@@ -15,8 +12,7 @@ steps:
     entrypoint: gcloud
     args:
       - 'run'
-      - 'services'
-      - 'update'
+      - 'deploy'
       - '$REPO_NAME'
       - '--image=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$COMMIT_SHA'
       - '--platform=managed'
@@ -24,6 +20,3 @@ steps:
       - '--quiet'
 substitutions:
   _REPOSITORY_HOSTNAME: europe-west1-docker.pkg.dev
-  _BASE_IMAGE: ghcr.io/graalvm/native-image-community:17-ol9
-  _BASE_IMAGE_RUN: ubuntu:latest
-  _CLASS_NAME: biz.turnonline.ecosystem.skeleton.Application
