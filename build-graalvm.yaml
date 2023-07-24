@@ -1,11 +1,12 @@
 steps:
-  # Build the project and push container image by docker push
+  # Build the project GraalVM native image
   - name: 'maven:3-eclipse-temurin-17'
     entrypoint: mvn
     args:
       - 'package'
       - '-Dpackaging=docker-native'
       - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA'
+  # Upload the built image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', '$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA' ]
   # Deploy the built image to Cloud Run
