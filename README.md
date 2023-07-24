@@ -1,7 +1,7 @@
 # Cloud Run service skeleton based on the Micronaut framework
 
-This combination of technologies allows developers to create scalable and efficient microservices or serverless
-applications on the Cloud Run platform.
+This combination of technologies enables developers to create scalable and efficient microservices or serverless
+applications that run on Cloud Run.
 
 ## Packaging types of the Micronaut Maven Plugin
 
@@ -53,8 +53,9 @@ Before the push, make sure the authentication is correctly configured
 
 # GeaalVM support
 
-There is a dedicated Cloud Build configuration for GraalVM native image build. To use it, **build-graalvm.yaml** file
-must be utilized.
+There is a dedicated Cloud Build configuration for GraalVM native image build. To use
+it, [build-graalvm.yaml](build-graalvm.yaml)
+file must be utilized.
 
 **Note about the workaround:** *docker push* is used instead of *mvn deploy* as the micronaut-maven-plugin to upload
 docker image to the Artifact Registry supports only *auth.username/auth.password* instead of preferred gcloud credential
