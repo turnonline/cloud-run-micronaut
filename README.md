@@ -1,7 +1,7 @@
 # Cloud Run service skeleton based on the Micronaut framework
 
 This combination of technologies enables developers to create scalable and efficient microservices or serverless
-applications that run on Cloud Run.
+applications that run on Cloud Run. With an option to build GraalVM native image that can be deployed using Cloud Build.
 
 ## Packaging types of the Micronaut Maven Plugin
 
@@ -51,7 +51,7 @@ europe-west1-docker.pkg.dev/gcp_project_id/docker-images
 Before the push, make sure the authentication is correctly configured
 [gcloud credential helper (recommended)](https://cloud.google.com/artifact-registry/docs/docker/authentication#gcloud-helper)
 
-# GeaalVM support
+# GraalVM support
 
 There is a dedicated Cloud Build configuration for GraalVM native image build. To use
 it, [build-graalvm.yaml](build-graalvm.yaml)
@@ -62,7 +62,7 @@ docker image to the Artifact Registry supports only *auth.username/auth.password
 helper,
 see [Choosing an authentication method](https://cloud.google.com/artifact-registry/docs/docker/authentication#methods)
 
-### Performance boost
+### Performance boost seen directly on GCP
 
 ```stacktrace
 INFO io.micronaut.runtime.Micronaut - Startup completed in 183ms. Server Running: http://localhost:8080
@@ -82,14 +82,15 @@ GET 200 648 B 5 ms Safari 16.5.2 https://cloud-run-micronaut-nj5jdl6g3q-ew.a.run
 
 [Supported APIs](https://github.com/googleapis/google-cloud-java#supported-apis)
 
-# Local Cloud Build testing
+# Cloud Build testing
 
 ```bash
 gcloud builds submit --substitutions=REPO_NAME="cloud-run-micronaut",SHORT_SHA="1.0.0" --config build-graalvm.yaml .
 ```
 
-In order to speed up the build time, you can configure a stronger machine type. The first 120 builds-minutes per day are
-free (only for the default one).
+To speed up the build time, you can configure a more powerful machine type (attach it to the end of the Cloud Build
+YAML).
+The first 120 build-minutes per day are free (applicable only to the default one).
 
 ```yaml
 options:
