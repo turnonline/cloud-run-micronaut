@@ -5,7 +5,10 @@ steps:
     args:
       - 'compile'
       - 'jib:build'
-      - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA'
+    env:
+      - 'GCP_ID=$PROJECT_ID'
+      - 'SHORT_SHA=$SHORT_SHA'
+      - 'REPO_HOSTNAME=$_REPOSITORY_HOSTNAME'
   # Deploy the built image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: gcloud

@@ -1,11 +1,14 @@
 steps:
   # Build the project GraalVM native image
-  - name: 'maven:3-eclipse-temurin-17'
+  - name: 'vegardit/graalvm-maven:latest-java17'
     entrypoint: mvn
     args:
       - 'package'
       - '-Dpackaging=docker-native'
-      - '-Dimage=$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA'
+    env:
+      - 'GCP_ID=$PROJECT_ID'
+      - 'SHORT_SHA=$SHORT_SHA'
+      - 'REPO_HOSTNAME=$_REPOSITORY_HOSTNAME'
   # Upload the built image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', '$_REPOSITORY_HOSTNAME/$PROJECT_ID/docker-images/$REPO_NAME:$SHORT_SHA' ]
