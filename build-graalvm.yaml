@@ -1,6 +1,6 @@
 steps:
   # Build the project GraalVM native image
-  - name: 'vegardit/graalvm-maven:latest-java17'
+  - name: 'vegardit/graalvm-maven:latest-java21'
     entrypoint: mvn
     args:
       - 'package'

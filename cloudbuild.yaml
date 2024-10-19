@@ -1,6 +1,6 @@
 steps:
   # Build the project and push container image by maven JIB plugin
-  - name: 'maven:3-eclipse-temurin-17'
+  - name: 'maven:3-eclipse-temurin-21'
     entrypoint: mvn
     args:
       - 'compile'

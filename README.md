@@ -30,10 +30,10 @@ Once successfully finished, you can find the final image in Docker daemon tagged
 Before attempting to push the image, make sure you run GraalVM JDK. The easiest way to install GraalVM on Linux or Mac
 is to use [SDKMan.io](https://sdkman.io/).
 
-*Java 17*, check the latest version at [GraalVM downloads](https://www.graalvm.org/downloads/)
+*Java 21*, check the latest version at [GraalVM downloads](https://www.graalvm.org/downloads/)
 
 ```bash
-sdk install java 17.0.7-graal
+sdk install java 21.0.3-graal
 ```
 
 Command to push the Docker image of the application to the Artifact Registry:
