@@ -41,7 +41,7 @@
         <exec.mainClass>biz.turnonline.ecosystem.skeleton.Application</exec.mainClass>
         <packaging>jar</packaging>
         <micronaut.runtime>netty</micronaut.runtime>
-        <maven.native.plugin.version>0.10.3</maven.native.plugin.version>
+        <maven.native.plugin.version>0.11.4</maven.native.plugin.version>
     </properties>
 
     <dependencyManagement>
