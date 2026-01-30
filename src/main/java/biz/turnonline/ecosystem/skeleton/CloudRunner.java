@@ -9,11 +9,11 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
+import jakarta.annotation.Nonnull;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 
@@ -44,7 +44,7 @@ public class CloudRunner
     public HttpResponse<?> run( @Body String body )
     {
         String plainText = decode( body );
-        LOGGER.info( "Decoded text = " + plainText );
+        LOGGER.info( "Decoded text = {}", plainText );
 
         return HttpResponse.ok( plainText );
     }

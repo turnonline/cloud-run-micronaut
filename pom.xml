@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.micronaut.platform</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>4.6.3</version>
+        <version>4.10.7</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -37,6 +37,7 @@
     <properties>
         <jdk.version>21</jdk.version>
         <release.version>21</release.version>
+        <micronaut.version>4.10.14</micronaut.version>
         <exec.mainClass>biz.turnonline.ecosystem.skeleton.Application</exec.mainClass>
         <packaging>jar</packaging>
         <micronaut.runtime>netty</micronaut.runtime>
@@ -48,7 +49,7 @@
             <dependency>
                 <groupId>com.google.cloud</groupId>
                 <artifactId>libraries-bom</artifactId>
-                <version>26.34.0</version>
+                <version>26.74.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -85,8 +86,8 @@
             <artifactId>micronaut-runtime</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -117,7 +118,7 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>1.6.5</version>
+            <version>1.6.6</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
@@ -147,7 +148,7 @@
         <dependency>
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
-            <version>1.4.2</version>
+            <version>1.4.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -198,7 +199,7 @@
                         <path>
                             <groupId>io.micronaut.validation</groupId>
                             <artifactId>micronaut-validation-processor</artifactId>
-                            <version>4.7.0</version>
+                            <version>${micronaut.validation.version}</version>
                             <exclusions>
                                 <exclusion>
                                     <groupId>io.micronaut</groupId>
