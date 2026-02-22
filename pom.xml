@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.micronaut.platform</groupId>
         <artifactId>micronaut-parent</artifactId>
-        <version>4.10.7</version>
+        <version>4.10.8</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -37,7 +37,7 @@
     <properties>
         <jdk.version>21</jdk.version>
         <release.version>21</release.version>
-        <micronaut.version>4.10.14</micronaut.version>
+        <micronaut.version>4.10.15</micronaut.version>
         <exec.mainClass>biz.turnonline.ecosystem.skeleton.Application</exec.mainClass>
         <packaging>jar</packaging>
         <micronaut.runtime>netty</micronaut.runtime>
@@ -49,7 +49,7 @@
             <dependency>
                 <groupId>com.google.cloud</groupId>
                 <artifactId>libraries-bom</artifactId>
-                <version>26.74.0</version>
+                <version>26.76.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -228,7 +228,7 @@
             </plugin>
             <plugin>
                 <!-- The solution to exclude manifest signature files by maven-shade-plugin
-                 (caused by conscrypt-openjdk-uber-2.5.1.jar as transitive dependency of firebase-admin)-->
+                 (caused by conscrypt-openjdk-uber-2.5.1.jar as a transitive dependency of firebase-admin)-->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <executions>
