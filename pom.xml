@@ -37,7 +37,6 @@
     <properties>
         <jdk.version>21</jdk.version>
         <release.version>21</release.version>
-        <micronaut.version>4.10.15</micronaut.version>
         <exec.mainClass>biz.turnonline.ecosystem.skeleton.Application</exec.mainClass>
         <packaging>jar</packaging>
         <micronaut.runtime>netty</micronaut.runtime>
